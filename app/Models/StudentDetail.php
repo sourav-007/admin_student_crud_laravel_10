@@ -13,10 +13,11 @@ class StudentDetail extends Model
     public $incrementing = false;
     protected $keyType = 'string';   
     protected $table = 'student_details';
+    public $timestamps = false;
 
     protected $fillable = [
-        'firstname', 'middlename', 'lastname', 'email', 'mobile_no', 'alternate_mobile_no',
-        'gender', 'caste', 'dob', 'age', 'aadhaar_no', 'nationality'
+        'aadhaar_no', 'firstname', 'middlename', 'lastname', 'email', 'mobile_no', 'alternate_mobile_no',
+        'gender', 'caste', 'dob', 'age', 'nationality'
     ];
 
     public function qualifications()

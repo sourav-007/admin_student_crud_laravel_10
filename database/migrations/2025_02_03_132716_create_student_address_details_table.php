@@ -13,21 +13,19 @@ return new class extends Migration
     {
         Schema::create('student_address_details', function (Blueprint $table) {
             $table->id();
-            // $table->string('student_address_id', 5)->primary();
-            // $table->unsignedBigInteger('s_id');
             $table->string('s_id',12);
-            $table->string('country', 20)->nullable(false);
+            $table->integer('country')->nullable(false);
             $table->string('current_house_no', 6)->nullable();
-            $table->string('current_street', 50)->nullable();
-            $table->string('current_district', 50)->nullable();
-            $table->string('current_pincode', 6)->nullable();
-            $table->string('current_state', 15)->nullable();
+            $table->string('current_street', 60)->nullable();
+            $table->bigInteger('current_city')->nullable();
+            $table->string('current_pincode', 10)->nullable();
+            $table->bigInteger('current_state')->nullable();
             $table->boolean('same_as_current')->default(0);
             $table->string('permanent_house_no', 6)->nullable();
-            $table->string('permanent_street', 50)->nullable();
-            $table->string('permanent_district', 50)->nullable();
-            $table->string('permanent_pincode', 6)->nullable();
-            $table->string('permanent_state', 15)->nullable();
+            $table->string('permanent_street', 60)->nullable();
+            $table->bigInteger('permanent_city')->nullable();
+            $table->string('permanent_pincode', 10)->nullable();
+            $table->bigInteger('permanent_state')->nullable();
             $table->timestamps();
             $table->foreign('s_id')->references('aadhaar_no')->on('student_details')->onDelete('cascade');
         });

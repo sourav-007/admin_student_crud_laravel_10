@@ -18,9 +18,6 @@
         @livewireStyles
     </head>
     <body>
-        {{-- <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div> --}}
         <div class="font-family-sans-serif text-dark">
             {{ $slot }}
         </div>        

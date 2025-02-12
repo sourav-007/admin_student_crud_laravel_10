@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('qualification_details', function (Blueprint $table) {
             $table->id();
-            // $table->string('qualification_id', 5)->primary();
-            // $table->unsignedBigInteger('s_id');
             $table->string('s_id',12);
             $table->enum('qualification_type', ['High School', 'Intermediate', 'Graduation', 'Post Graduation'])->nullable(false);
             $table->string('institution_name', 100)->nullable(false);

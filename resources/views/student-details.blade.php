@@ -50,7 +50,8 @@
                             </tr>
                             <tr>
                                 <th>Aadhaar No</th>
-                                <td>{{ $student->aadhaar_no }}</td>
+                                {{-- <td>{{ $student->aadhaar_no }}</td> --}}
+                                <td>{{ str_repeat('X', 4) . ' ' . str_repeat('X', 4) . ' ' . substr($student->aadhaar_no, -4) }}</td>
                             </tr>
                             <tr>
                                 <th>Nationality</th>
@@ -79,7 +80,7 @@
                                     @if ($student->address)
                                         {{ $student->address->current_house_no }}, 
                                         {{ $student->address->current_street }}, 
-                                        {{ $student->address->current_district }},
+                                        {{ $student->address->current_city }},
                                         {{ $student->address->current_state }} - 
                                         {{ $student->address->current_pincode }}
                                     @else
@@ -92,7 +93,7 @@
                                 <td>
                                     {{ optional($student->address)->permanent_house_no }},
                                     {{ optional($student->address)->permanent_street }},
-                                    {{ optional($student->address)->permanent_district }},
+                                    {{ optional($student->address)->permanent_city }},
                                     {{ optional($student->address)->permanent_state }} - 
                                     {{ optional($student->address)->permanent_pincode }}
                                 </td>
@@ -133,6 +134,7 @@
                 
                 <div class="d-flex justify-content-center gap-3 text-center mt-4">
                     <a href="{{ route('dashboard') }}" class="btn btn-secondary rounded">Back</a>
+                    <a href="{{ route('student.edit', substr($student->aadhaar_no, -4)) }}" class="btn btn-primary rounded">Edit</a>
                     <a href="{{ route('student.generatePDF', $student->aadhaar_no) }}" class="btn btn-success rounded">Print</a>
                 </div>
             </div>

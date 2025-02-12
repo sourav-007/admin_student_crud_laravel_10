@@ -90,7 +90,7 @@
                             </tr>
                             <tr>
                                 <th>Aadhaar No</th>
-                                <td>{{ $student->aadhaar_no }}</td>
+                                <td>{{ str_repeat('X', 4) . ' ' . str_repeat('X', 4) . ' ' . substr($student->aadhaar_no, -4) }}</td>
                             </tr>
                             <tr>
                                 <th>Nationality</th>
@@ -112,7 +112,7 @@
                                     @if ($student->address)
                                         {{ $student->address->current_house_no }},
                                         {{ $student->address->current_street }},
-                                        {{ $student->address->current_district }},
+                                        {{ $student->address->current_city }},
                                         {{ $student->address->current_state }} -
                                         {{ $student->address->current_pincode }}
                                     @else
@@ -125,7 +125,7 @@
                                 <td>
                                     {{ optional($student->address)->permanent_house_no }},
                                     {{ optional($student->address)->permanent_street }},
-                                    {{ optional($student->address)->permanent_district }},
+                                    {{ optional($student->address)->permanent_city }},
                                     {{ optional($student->address)->permanent_state }} -
                                     {{ optional($student->address)->permanent_pincode }}
                                 </td>
@@ -137,7 +137,7 @@
                 <div class="row mt-4">
                     <div class="col-12">
                         <h5 class="text-primary mb-2">Qualification Details</h5>
-                        <table class="table table-bordered">
+                        <table class="table table-bordered text-center">
                             <thead class="table-light">
                                 <tr>
                                     <th>Qualification</th>

@@ -28,15 +28,11 @@ class CreateNewUser implements CreatesNewUsers
                         'unique:users,email', 'email:rfc,dns',
                         'regex:/^[\w\._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/'],
             'password' => ['required','string','min:6','max:10',new PasswordValidation()],
-            //'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->after(function ($validator) use ($input) {
             if (isset($input['password']) && isset($input['password_confirmation']) && $input['password'] !== $input['password_confirmation']) {
                 $validator->errors()->add('password_confirmation', 'The password confirmation does not match.');
             }
         })->validate();
-
-        // $role = $input['email'] === 'admin@gmail.com' ? 'admin' : 'student';
-        // echo $role;
 
         return User::create([
             'user_id' => "U" . now()->format('y') . now()->format('m') . now()->format('d') . rand(1000, 9999),
